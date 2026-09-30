@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Stacy & Franklin · A Date to Remember</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- Floating hearts background -->
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <!-- ========== MAIN APP CONTAINER ========== -->
+  <div class="app-container" id="app">
+
+    <!-- SCREEN 1: WELCOME -->
+    <section class="screen active" id="screen-welcome">
+      <div class="text-center flex-col" style="gap: 18px;">
+        <h1 class="gold-text" style="font-size: 2.2rem;">Welcome Stacy ❤️</h1>
+        <p class="subtitle" style="font-size: 1.1rem; max-width: 320px;">
+          Frank has prepared something special for you...
+        </p>
+        <p style="color: var(--pink-soft); font-size: 0.95rem; font-style: italic;">
+          "Your answers may determine the fate of our date. 👀"
+        </p>
+        <button class="btn btn-primary mt-2" id="btn-begin" style="font-size: 1.15rem; padding: 18px 40px;">
+          BEGIN OUR DATE ✨
+        </button>
+      </div>
+      <p class="footer-note">Made with ❤️ by Franklin</p>
+    </section>
+
+    <!-- SCREEN 2: THE BIG QUESTION -->
+    <section class="screen" id="screen-big-question">
+      <h2 class="gold-text text-center" style="font-size: 1.5rem; margin-bottom: 8px;">
+        Are you ready to go on a date with Franklin? ❤️
+      </h2>
+      <div class="choice-grid" style="grid-template-columns: 1fr 1fr; max-width: 400px; margin: 20px auto;">
+        <div class="choice-card" id="yes-card" data-value="YES" style="min-height: 140px;">
+          <span class="check-indicator">✓</span>
+          <span class="choice-label" style="font-size: 1.6rem;">YES ❤️</span>
+        </div>
+        <div class="choice-card dodge-btn" id="no-card" data-value="NO" style="min-height: 140px; position: relative; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);">
+          <span class="choice-label" style="font-size: 1.6rem;">NO 🙈</span>
+        </div>
+      </div>
+      <div class="btn-group mt-2">
+        <button class="btn btn-outline" id="back-big" disabled>← BACK</button>
+        <button class="btn btn-primary" id="next-big" disabled>NEXT →</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: FOOD LOCATION -->
+    <section class="screen" id="screen-food-location">
+      <h2 class="gold-text text-center" style="font-size: 1.4rem;">Where would you like us to get our food from? 🍽️</h2>
+      <div class="choice-grid" style="grid-template-columns: 1fr 1fr; max-width: 420px; margin: 16px auto;">
+        <div class="choice-card" data-answer="foodLocation" data-value="Roban">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🏠</div>
+          <span class="choice-label">Roban</span>
+          <span class="choice-sub">Cozy & local</span>
+        </div>
+        <div class="choice-card" data-answer="foodLocation" data-value="Ntachi-Osa">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🌿</div>
+          <span class="choice-label">Ntachi-Osa</span>
+          <span class="choice-sub">Authentic & warm</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-outline back-btn" data-prev="screen-big-question">← BACK</button>
+        <button class="btn btn-primary next-btn" data-next="screen-main-food" disabled>NEXT →</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: MAIN FOOD -->
+    <section class="screen" id="screen-main-food">
+      <h2 class="gold-text text-center" style="font-size: 1.4rem;">What would you like to eat that day? 😋</h2>
+      <div class="choice-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 480px; margin: 16px auto;">
+        <div class="choice-card" data-answer="mainFood" data-value="Swallow & Soup">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🍲</div>
+          <span class="choice-label">Swallow & Soup</span>
+        </div>
+        <div class="choice-card" data-answer="mainFood" data-value="Fried Rice">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🍚</div>
+          <span class="choice-label">Fried Rice</span>
+        </div>
+        <div class="choice-card" data-answer="mainFood" data-value="Jollof Rice">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🍛</div>
+          <span class="choice-label">Jollof Rice</span>
+        </div>
+        <div class="choice-card" data-answer="mainFood" data-value="Stew">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🥘</div>
+          <span class="choice-label">Stew</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-outline back-btn" data-prev="screen-food-location">← BACK</button>
+        <button class="btn btn-primary next-btn" data-next="screen-snack" disabled>NEXT →</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 5: SNACK -->
+    <section class="screen" id="screen-snack">
+      <h2 class="gold-text text-center" style="font-size: 1.4rem;">And what little treat would you love that day? 👀❤️</h2>
+      <div class="choice-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 480px; margin: 16px auto;">
+        <div class="choice-card" data-answer="snack" data-value="Shawarma">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🌯</div>
+          <span class="choice-label">Shawarma</span>
+        </div>
+        <div class="choice-card" data-answer="snack" data-value="Burger">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🍔</div>
+          <span class="choice-label">Burger</span>
+        </div>
+        <div class="choice-card" data-answer="snack" data-value="Meat Pie">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🥟</div>
+          <span class="choice-label">Meat Pie</span>
+        </div>
+        <div class="choice-card" data-answer="snack" data-value="Fish Pie">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🐟</div>
+          <span class="choice-label">Fish Pie</span>
+        </div>
+        <div class="choice-card" data-answer="snack" data-value="Barbecue / Roasted Fish">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🔥</div>
+          <span class="choice-label">Barbecue / Roasted Fish</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-outline back-btn" data-prev="screen-main-food">← BACK</button>
+        <button class="btn btn-primary next-btn" data-next="screen-movie" disabled>NEXT →</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 6: MOVIE -->
+    <section class="screen" id="screen-movie">
+      <h2 class="gold-text text-center" style="font-size: 1.4rem;">What would you like us to watch together? 🎬❤️</h2>
+      <div class="choice-grid" style="grid-template-columns: 1fr 1fr; max-width: 420px; margin: 16px auto;">
+        <div class="choice-card" id="romantic-movie-card" data-answer="movie" data-value="Romantic Movie">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">💕</div>
+          <span class="choice-label">Romantic Movie ❤️</span>
+        </div>
+        <div class="choice-card dodge-btn" id="nigerian-movie-card" data-value="Nigerian Romantic Movie">
+          <div class="img-fallback">🇳🇬</div>
+          <span class="choice-label">Nigerian Romantic Movie 🇳🇬</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-outline back-btn" data-prev="screen-snack">← BACK</button>
+        <button class="btn btn-primary next-btn" data-next="screen-drink" disabled>NEXT →</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 7: DRINK -->
+    <section class="screen" id="screen-drink">
+      <h2 class="gold-text text-center" style="font-size: 1.4rem;">What would you like to have with it? 🥤</h2>
+      <div class="choice-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 480px; margin: 16px auto;">
+        <div class="choice-card" data-answer="drink" data-value="Alcohol">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🍷</div>
+          <span class="choice-label">Alcohol</span>
+        </div>
+        <div class="choice-card" data-answer="drink" data-value="Soft Drink">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🥤</div>
+          <span class="choice-label">Soft Drink</span>
+        </div>
+        <div class="choice-card" data-answer="drink" data-value="Ice Cream">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🍦</div>
+          <span class="choice-label">Ice Cream</span>
+        </div>
+        <div class="choice-card" data-answer="drink" data-value="5 Alive">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🧃</div>
+          <span class="choice-label">5 Alive</span>
+        </div>
+        <div class="choice-card" data-answer="drink" data-value="Chivita">
+          <span class="check-indicator">✓</span>
+          <div class="img-fallback">🍊</div>
+          <span class="choice-label">Chivita</span>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-outline back-btn" data-prev="screen-movie">← BACK</button>
+        <button class="btn btn-primary next-btn" data-next="screen-unexpected" disabled>NEXT →</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 8: UNEXPECTED THING -->
+    <section class="screen" id="screen-unexpected">
+      <h2 class="gold-text text-center" style="font-size: 1.3rem;">Now for something a little more interesting... 👀❤️</h2>
+      <p class="text-center subtitle" style="font-size: 0.95rem; margin: 12px 0 4px;">
+        If one funny, unexpected thing could happen on our date, what would you secretly love it to be?
+      </p>
+      <textarea class="romantic-textarea" id="unexpected-input" placeholder="Tell me something unexpected you'd love to happen... ✨" maxlength="500"></textarea>
+      <p class="text-center" style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">
+        There are no wrong answers here. I'm genuinely curious. ❤️
+      </p>
+      <div class="btn-group mt-2">
+        <button class="btn btn-outline back-btn" data-prev="screen-drink">← BACK</button>
+        <button class="btn btn-primary" id="next-unexpected" disabled>NEXT →</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 9: DATE DAY -->
+    <section class="screen" id="screen-dateday">
+      <h2 class="gold-text text-center" style="font-size: 1.4rem;">Which day would you like our date to happen? 📅❤️</h2>
+      <div id="day-selection" class="flex-col" style="gap: 12px; width: 100%; max-width: 400px; margin: 16px auto;">
+        <!-- Weekday / Weekend buttons injected by JS -->
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-outline back-btn" data-prev="screen-unexpected">← BACK</button>
+        <button class="btn btn-primary" id="next-dateday" disabled>NEXT →</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 10: SUMMARY -->
+    <section class="screen" id="screen-summary">
+      <h2 class="gold-text text-center" style="font-size: 1.5rem;">You're Finally Going On A Date With Franklin! ❤️🌹</h2>
+      <div class="summary-card" id="summary-card">
+        <!-- Dynamically filled -->
+      </div>
+      <div class="text-center mt-2">
+        <span class="date-status">DATE STATUS: CONFIRMED ❤️</span>
+      </div>
+      <div class="btn-group mt-3" style="flex-direction: column;">
+        <button class="btn btn-primary" id="btn-download" style="width: 100%;">📥 DOWNLOAD MY DATE PLAN</button>
+        <button class="btn btn-outline" id="btn-continue-fee" style="width: 100%;">CONTINUE →</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 11: ₦10,000 PRANK -->
+    <section class="screen" id="screen-fee">
+      <div class="text-center flex-col" style="gap: 12px;">
+        <h2 class="gold-text" style="font-size: 1.8rem;">WAIT... ONE LAST THING. 👀</h2>
+        <p style="font-size: 1.4rem; font-family: var(--font-heading); color: var(--gold);">DATE CONFIRMATION FEE</p>
+        <p style="font-size: 3rem; font-family: var(--font-heading); color: var(--gold-light); font-weight: 700;">₦10,000</p>
+        <p class="subtitle" style="font-size: 0.9rem;">Because apparently romance isn't free. 😂❤️</p>
+        <button class="btn btn-primary mt-2" id="btn-pay-fee" style="font-size: 1.2rem; padding: 18px 36px;">💳 PAY ₦10,000</button>
+        <div id="prank-reveal" class="hidden" style="margin-top: 20px;">
+          <p style="font-size: 1.3rem; margin: 8px 0;">😂😂 GOT YOU!</p>
+          <p style="color: var(--cream);">You don't have to pay anything.</p>
+          <p style="color: var(--pink-soft); margin: 8px 0;">Your real payment is showing up for the date. ❤️🌹</p>
+          <p class="gold-text" style="font-size: 1.2rem; margin-top: 12px;">See you soon, Stacy. 😉</p>
+          <button class="btn btn-primary mt-2" id="btn-continue-send">CONTINUE ❤️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 12: SEND TO FRANK -->
+    <section class="screen" id="screen-send">
+      <div class="text-center flex-col" style="gap: 16px;">
+        <h2 class="gold-text" style="font-size: 1.8rem;">Your date plan is ready. 💌</h2>
+        <p style="color: var(--cream); font-size: 1rem; max-width: 300px;">
+          Now send your answers to Frank so he can confirm everything. ❤️
+        </p>
+        <button class="btn btn-primary" id="btn-whatsapp" style="font-size: 1.1rem; padding: 18px 36px; width: 100%;">
+          💌 SEND MY DATE PLAN TO FRANK
+        </button>
+        <button class="btn btn-outline" id="btn-download-final" style="width: 100%;">
+          📥 DOWNLOAD MY DATE PLAN
+        </button>
+        <p class="footer-note" style="margin-top: 20px;">Stacy ❤️ Franklin — a date to remember</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- POPUP OVERLAY -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box" id="popupBox">
+      <p id="popupText">❤️</p>
+      <button class="btn btn-primary mt-2" id="popupClose" style="min-width: 120px;">Continue</button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    (function() {
+      "use strict";
+
+      // =============================================
+      // 1. STATE & DATA
+      // =============================================
+      const userAnswers = {
+        foodLocation: "",
+        mainFood: "",
+        snack: "",
+        movie: "",
+        drink: "",
+        unexpectedThing: "",
+        dateDay: ""
+      };
+
+      // For screen 9 sub-selection
+      let dateDayCategory = ""; // "weekday" or "weekend"
+
+      // Screen order for navigation
+      const screenOrder = [
+        "screen-welcome",
+        "screen-big-question",
+        "screen-food-location",
+        "screen-main-food",
+        "screen-snack",
+        "screen-movie",
+        "screen-drink",
+        "screen-unexpected",
+        "screen-dateday",
+        "screen-summary",
+        "screen-fee",
+        "screen-send"
+      ];
+
+      let currentScreenIndex = 0;
+
+      // =============================================
+      // 2. UTILITY FUNCTIONS
+      // =============================================
+      function $(id) { return document.getElementById(id); }
+      function qs(sel, ctx) { return (ctx || document).querySelector(sel); }
+      function qsa(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
+
+      function showScreen(screenId) {
+        qsa(".screen").forEach(s => s.classList.remove("active"));
+        const target = $(screenId);
+        if (target) {
+          target.classList.add("active");
+          currentScreenIndex = screenOrder.indexOf(screenId);
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function showToast(msg, duration = 2600) {
+        const toast = $("toast");
+        toast.textContent = msg;
+        toast.classList.add("show");
+        clearTimeout(toast._timeout);
+        toast._timeout = setTimeout(() => {
+          toast.classList.remove("show");
+        }, duration);
+      }
+
+      function showPopup(message, btnText = "Continue", onClose) {
+        const overlay = $("popupOverlay");
+        $("popupText").innerHTML = message;
+        $("popupClose").textContent = btnText;
+        overlay.classList.add("show");
+        const closeHandler = () => {
+          overlay.classList.remove("show");
+          $("popupClose").removeEventListener("click", closeHandler);
+          if (typeof onClose === "function") onClose();
+        };
+        $("popupClose").addEventListener("click", closeHandler);
+      }
+
+      function randomMessage(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      const romanticMessages = [
+        "Aww, excellent choice, Stacy. ❤️",
+        "Frank approves. 😌❤️",
+        "That's a beautiful choice. 🌹",
+        "Perfect. Our date is coming together. ✨",
+        "You have good taste, Stacy. 😉",
+        "I knew you'd choose that. ❤️",
+        "Lovely. Just lovely. 🌸"
+      ];
+
+      // =============================================
+      // 3. FLOATING HEARTS & SPARKLES
+      // =============================================
+      function initFloatingHearts() {
+        const container = $("floatingHearts");
+        const hearts = ["❤️", "🌹", "💛", "✨", "💕", "🌸"];
+        for (let i = 0; i < 14; i++) {
+          const span = document.createElement("span");
+          span.textContent = hearts[i % hearts.length];
+          span.style.left = Math.random() * 100 + "%";
+          span.style.animationDelay = Math.random() * 8 + "s";
+          span.style.animationDuration = (5 + Math.random() * 5) + "s";
+          span.style.fontSize = (14 + Math.random() * 18) + "px";
+          container.appendChild(span);
+        }
+
+        // Sparkles
+        for (let i = 0; i < 10; i++) {
+          const sp = document.createElement("div");
+          sp.className = "sparkle";
+          sp.style.left = Math.random() * 100 + "%";
+          sp.style.top = Math.random() * 100 + "%";
+          sp.style.animationDelay = Math.random() * 3 + "s";
+          document.body.appendChild(sp);
+        }
+      }
+
+      // =============================================
+      // 4. CONFETTI CELEBRATION
+      // =============================================
+      function celebrate() {
+        const colors = ["#d4af37", "#f5e7a7", "#c94b4b", "#f9d9d9", "#fffaf2"];
+        for (let i = 0; i < 60; i++) {
+          const piece = document.createElement("div");
+          piece.className = "confetti-piece";
+          piece.style.left = Math.random() * 100 + "vw";
+          piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+          piece.style.width = (6 + Math.random() * 10) + "px";
+          piece.style.height = (6 + Math.random() * 10) + "px";
+          piece.style.animationDelay = Math.random() * 0.8 + "s";
+          piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+          document.body.appendChild(piece);
+          setTimeout(() => piece.remove(), 3800);
+        }
+      }
+
+      // =============================================
+      // 5. DODGE BUTTON (NO, Nigerian Movie, Sunday)
+      // =============================================
+      function makeDodgeButton(element, messages) {
+        let dodgeCount = 0;
+        const originalTransform = element.style.transform || "";
+
+        function dodge() {
+          dodgeCount++;
+          const maxX = 120;
+          const maxY = 60;
+          const x = (Math.random() - 0.5) * maxX;
+          const y = (Math.random() - 0.5) * maxY;
+          element.style.transform = `translate(${x}px, ${y}px) scale(0.95)`;
+          element.style.transition = "transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)";
+          showToast(randomMessage(messages), 1800);
+
+          // Reset position after a moment to keep it usable
+          clearTimeout(element._dodgeReset);
+          element._dodgeReset = setTimeout(() => {
+            element.style.transform = originalTransform || "translate(0,0) scale(1)";
+          }, 1200);
+        }
+
+        element.addEventListener("mouseenter", dodge);
+        element.addEventListener("touchstart", (e) => {
+          e.preventDefault();
+          dodge();
+        }, { passive: false });
+        element.addEventListener("click", (e) => {
+          e.preventDefault();
+          dodge();
+        });
+      }
+
+      // =============================================
+      // 6. SELECTION LOGIC
+      // =============================================
+      function handleChoiceCard(card, answerKey, value, callback) {
+        // Deselect siblings
+        const parent = card.parentElement;
+        qsa(".choice-card", parent).forEach(c => {
+          c.classList.remove("selected");
+        });
+        card.classList.add("selected");
+
+        if (answerKey && userAnswers.hasOwnProperty(answerKey)) {
+          userAnswers[answerKey] = value;
+        }
+
+        // Enable NEXT button for current screen
+        const screen = card.closest(".screen");
+        const nextBtn = qs(".next-btn", screen) || qs("#next-big", screen);
+        if (nextBtn) nextBtn.disabled = false;
+
+        if (typeof callback === "function") callback(value);
+      }
+
+      // =============================================
+      // 7. SCREEN 2: BIG QUESTION
+      // =============================================
+      function initBigQuestion() {
+        const yesCard = $("yes-card");
+        const noCard = $("no-card");
+        const nextBtn = $("next-big");
+        const backBtn = $("back-big");
+
+        yesCard.addEventListener("click", () => {
+          qsa(".choice-card", yesCard.parentElement).forEach(c => c.classList.remove("selected"));
+          yesCard.classList.add("selected");
+          nextBtn.disabled = false;
+          showPopup(
+            "<span style='font-size:1.8rem;'>❤️</span><br><strong>Well well well...</strong><br>Looks like Stacy has officially agreed to go on a date with Franklin. 🌹",
+            "NEXT →",
+            () => {
+              showScreen("screen-food-location");
+            }
+          );
+        });
+
+        makeDodgeButton(noCard, [
+          "Nice try 😂❤️",
+          "Hmm... try again 👀",
+          "Frank said no to that NO 😂",
+          "You can't escape the romance 🌹",
+          "Come on Stacy 😭❤️",
+          "Are you really trying to reject Franklin? 😂"
+        ]);
+
+        nextBtn.addEventListener("click", () => {
+          showScreen("screen-food-location");
+        });
+        backBtn.addEventListener("click", () => {
+          showScreen("screen-welcome");
+        });
+      }
+
+      // =============================================
+      // 8. SCREEN 3-7: GENERIC CHOICE SCREENS
+      // =============================================
+      function initChoiceScreens() {
+        // All cards with data-answer attribute
+        qsa(".choice-card[data-answer]").forEach(card => {
+          card.addEventListener("click", () => {
+            const key = card.dataset.answer;
+            const value = card.dataset.value;
+            handleChoiceCard(card, key, value, () => {
+              showToast(randomMessage(romanticMessages), 2000);
+            });
+          });
+        });
+
+        // Special: Romantic Movie card (also has data-answer but it's a valid choice)
+        const romanticMovieCard = $("romantic-movie-card");
+        if (romanticMovieCard) {
+          romanticMovieCard.addEventListener("click", () => {
+            qsa(".choice-card", romanticMovieCard.parentElement).forEach(c => c.classList.remove("selected"));
+            romanticMovieCard.classList.add("selected");
+            userAnswers.movie = "Romantic Movie";
+            const nextBtn = qs(".next-btn", romanticMovieCard.closest(".screen"));
+            if (nextBtn) nextBtn.disabled = false;
+            showToast("Keeping the romance alive. 🌹🎬", 2200);
+          });
+        }
+
+        // Nigerian Movie dodge
+        const nigerianMovieCard = $("nigerian-movie-card");
+        if (nigerianMovieCard) {
+          makeDodgeButton(nigerianMovieCard, [
+            "Not that one 😂❤️",
+            "Nice attempt, Stacy 👀",
+            "We're keeping the romance alive 🌹",
+            "Try the other one 😂"
+          ]);
+        }
+      }
+
+      // =============================================
+      // 9. UNEXPECTED THING (SCREEN 8)
+      // =============================================
+      function initUnexpectedScreen() {
+        const textarea = $("unexpected-input");
+        const nextBtn = $("next-unexpected");
+
+        textarea.addEventListener("input", () => {
+          const val = textarea.value.trim();
+          nextBtn.disabled = val.length === 0;
+          userAnswers.unexpectedThing = val;
+        });
+
+        nextBtn.addEventListener("click", () => {
+          userAnswers.unexpectedThing = textarea.value.trim();
+          showScreen("screen-dateday");
+          renderDaySelection();
+        });
+      }
+
+      // =============================================
+      // 10. DATE DAY (SCREEN 9)
+      // =============================================
+      function renderDaySelection() {
+        const container = $("day-selection");
+        const nextBtn = $("next-dateday");
+        nextBtn.disabled = true;
+
+        // Reset
+        container.innerHTML = "";
+        dateDayCategory = "";
+
+        // Step 1: Weekday/Weekend
+        const mainButtons = document.createElement("div");
+        mainButtons.style.display = "grid";
+        mainButtons.style.gridTemplateColumns = "1fr 1fr";
+        mainButtons.style.gap = "12px";
+        mainButtons.style.width = "100%";
+
+        const weekdayBtn = document.createElement("div");
+        weekdayBtn.className = "choice-card";
+        weekdayBtn.innerHTML = '<div class="img-fallback">📅</div><span class="choice-label">WEEKDAY</span>';
+        weekdayBtn.style.minHeight = "100px";
+
+        const weekendBtn = document.createElement("div");
+        weekendBtn.className = "choice-card";
+        weekendBtn.innerHTML = '<div class="img-fallback">🎉</div><span class="choice-label">WEEKEND</span>';
+        weekendBtn.style.minHeight = "100px";
+
+        mainButtons.appendChild(weekdayBtn);
+        mainButtons.appendChild(weekendBtn);
+        container.appendChild(mainButtons);
+
+        const daysContainer = document.createElement("div");
+        daysContainer.style.display = "none";
+        daysContainer.style.gridTemplateColumns = "repeat(2, 1fr)";
+        daysContainer.style.gap = "10px";
+        daysContainer.style.width = "100%";
+        container.appendChild(daysContainer);
+
+        weekdayBtn.addEventListener("click", () => {
+          weekdayBtn.classList.add("selected");
+          weekendBtn.classList.remove("selected");
+          dateDayCategory = "weekday";
+          renderDays(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], daysContainer);
+        });
+
+        weekendBtn.addEventListener("click", () => {
+          weekendBtn.classList.add("selected");
+          weekdayBtn.classList.remove("selected");
+          dateDayCategory = "weekend";
+          renderDays(["Saturday", "Sunday"], daysContainer);
+        });
+
+        function renderDays(days, containerEl) {
+          containerEl.style.display = "grid";
+          containerEl.innerHTML = "";
+          nextBtn.disabled = true;
+
+          days.forEach(day => {
+            const card = document.createElement("div");
+            card.className = "choice-card";
+            card.style.minHeight = "80px";
+            card.innerHTML = `<span class="check-indicator">✓</span><span class="choice-label">${day}</span>`;
+
+            if (day === "Sunday") {
+              makeDodgeButton(card, [
+                "Sunday? Nice try 😂",
+                "Saturday is the one ❤️",
+                "Frank said Saturday 🌹",
+                "Not Sunday, Stacy! 😭❤️"
+              ]);
+            } else {
+              card.addEventListener("click", () => {
+                qsa(".choice-card", containerEl).forEach(c => c.classList.remove("selected"));
+                card.classList.add("selected");
+                userAnswers.dateDay = day;
+                nextBtn.disabled = false;
+                showToast(randomMessage(romanticMessages), 1800);
+              });
+            }
+            containerEl.appendChild(card);
+          });
+        }
+      }
+
+      // =============================================
+      // 11. SUMMARY GENERATION
+      // =============================================
+      function updateSummary() {
+        const card = $("summary-card");
+        const a = userAnswers;
+
+        const movieNote = a.movie === "Romantic Movie"
+          ? "because apparently we're keeping the romance alive. 🌹🎬"
+          : "";
+
+        card.innerHTML = `
+          <h3 class="gold-text text-center mb-2" style="font-size: 1.2rem;">💕 Stacy's Date Plan 💕</h3>
+          <div class="summary-line">
+            <span class="summary-emoji">❤️</span>
+            <span class="summary-text"><strong>Stacy</strong> has officially accepted her date with <strong>Franklin</strong>.</span>
+          </div>
+          <div class="summary-line">
+            <span class="summary-emoji">📍</span>
+            <span class="summary-text">She chose <strong>${a.foodLocation || "—"}</strong> for where they'll get their food.</span>
+          </div>
+          <div class="summary-line">
+            <span class="summary-emoji">🍛</span>
+            <span class="summary-text">Main meal: <strong>${a.mainFood || "—"}</strong></span>
+          </div>
+          <div class="summary-line">
+            <span class="summary-emoji">🥙</span>
+            <span class="summary-text">Little treat: <strong>${a.snack || "—"}</strong></span>
+          </div>
+          <div class="summary-line">
+            <span class="summary-emoji">🥤</span>
+            <span class="summary-text">Drink: <strong>${a.drink || "—"}</strong></span>
+          </div>
+          <div class="summary-line">
+            <span class="summary-emoji">🎬</span>
+            <span class="summary-text">Movie: <strong>${a.movie || "—"}</strong> ${movieNote}</span>
+          </div>
+          <div class="summary-line">
+            <span class="summary-emoji">📅</span>
+            <span class="summary-text">Chosen day: <strong>${a.dateDay || "—"}</strong></span>
+          </div>
+          <div class="summary-line" style="flex-direction: column; gap: 4px; border-bottom: none; padding-bottom: 0;">
+            <span class="summary-emoji">✨</span>
+            <span class="summary-text" style="font-style: italic; color: var(--pink-soft);">
+              "And when asked what unexpected thing she would secretly love to happen..."
+            </span>
+            <span class="summary-text" style="margin-top: 6px; background: rgba(212,175,55,0.08); padding: 10px 12px; border-radius: 10px; border-left: 3px solid var(--gold);">
+              ${a.unexpectedThing || "—"}
+            </span>
+          </div>
+        `;
+      }
+
+      // =============================================
+      // 12. WHATSAPP MESSAGE
+      // =============================================
+      function generateWhatsAppMessage() {
+        const a = userAnswers;
+        const msg = `Frank! 😂❤️
+
+I completed your little date website.
+
+Here is my official date plan:
+
+📍 Food location: ${a.foodLocation || "—"}
+🍛 Main food: ${a.mainFood || "—"}
+🥙 Snack: ${a.snack || "—"}
+🎬 Movie: ${a.movie || "—"}
+🥤 Drink: ${a.drink || "—"}
+📅 Date day: ${a.dateDay || "—"}
+
+✨ The unexpected thing I'd love:
+${a.unexpectedThing || "—"}
+
+I guess we're officially going on this date. ❤️🌹
+
+— Stacy`;
+        return msg;
+      }
+
+      function sendToWhatsApp() {
+        const phone = "2349161856824";
+        const message = generateWhatsAppMessage();
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, "_blank");
+      }
+
+      // =============================================
+      // 13. DOWNLOAD DATE PLAN
+      // =============================================
+      function downloadDatePlan() {
+        const a = userAnswers;
+        const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stacy's Date Plan ❤️</title>
+<style>
+  body {
+    background: #0a0a0a;
+    color: #f5efe6;
+    font-family: 'Georgia', serif;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    margin: 0;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 600px;
+    width: 100%;
+    background: linear-gradient(160deg, #1a140e, #0f0b07);
+    border: 2px solid #d4af37;
+    border-radius: 24px;
+    padding: 36px 28px;
+    box-shadow: 0 0 60px rgba(212, 175, 55, 0.2);
+  }
+  h1 {
+    color: #d4af37;
+    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  .gold { color: #d4af37; }
+  .line {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .emoji { font-size: 1.3rem; min-width: 30px; }
+  .status {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 1.2rem;
+    color: #f9d9d9;
+    border: 1px solid #c94b4b;
+    border-radius: 50px;
+    padding: 12px 28px;
+    display: inline-block;
+    letter-spacing: 2px;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.8rem;
+    color: rgba(207, 197, 184, 0.5);
+  }
+  .unexpected {
+    background: rgba(212,175,55,0.08);
+    padding: 16px;
+    border-radius: 12px;
+    border-left: 4px solid #d4af37;
+    margin-top: 8px;
+    font-style: italic;
+    color: #fdf8f0;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>💕 Stacy's Date Plan 💕</h1>
+  <div class="line"><span class="emoji">❤️</span> <span><strong>Stacy</strong> has officially accepted her date with <strong>Franklin</strong>.</span></div>
+  <div class="line"><span class="emoji">📍</span> <span>Food location: <strong>${a.foodLocation || "—"}</strong></span></div>
+  <div class="line"><span class="emoji">🍛</span> <span>Main food: <strong>${a.mainFood || "—"}</strong></span></div>
+  <div class="line"><span class="emoji">🥙</span> <span>Snack: <strong>${a.snack || "—"}</strong></span></div>
+  <div class="line"><span class="emoji">🎬</span> <span>Movie: <strong>${a.movie || "—"}</strong></span></div>
+  <div class="line"><span class="emoji">🥤</span> <span>Drink: <strong>${a.drink || "—"}</strong></span></div>
+  <div class="line"><span class="emoji">📅</span> <span>Date day: <strong>${a.dateDay || "—"}</strong></span></div>
+  <div class="line" style="flex-direction: column; border-bottom: none;">
+    <span class="emoji">✨</span>
+    <span>The unexpected thing I'd love:</span>
+    <div class="unexpected">${a.unexpectedThing || "—"}</div>
+  </div>
+  <div style="text-align: center;">
+    <span class="status">DATE STATUS: CONFIRMED ❤️</span>
+  </div>
+  <p class="footer">Made with ❤️ · Stacy & Franklin</p>
+</div>
+</body>
+</html>`;
+
+        const blob = new Blob([htmlContent], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        const aEl = document.createElement("a");
+        aEl.href = url;
+        aEl.download = "Stacy_Date_Plan.html";
+        document.body.appendChild(aEl);
+        aEl.click();
+        document.body.removeChild(aEl);
+        URL.revokeObjectURL(url);
+        showToast("📥 Date plan downloaded!", 2000);
+      }
+
+      // =============================================
+      // 14. INIT ALL SCREENS & NAVIGATION
+      // =============================================
+      function initNavigation() {
+        // Back buttons
+        qsa(".back-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const prev = btn.dataset.prev;
+            if (prev) showScreen(prev);
+          });
+        });
+
+        // Next buttons (generic)
+        qsa(".next-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const next = btn.dataset.next;
+            if (next) {
+              if (next === "screen-summary") {
+                updateSummary();
+              }
+              showScreen(next);
+            }
+          });
+        });
+
+        // Begin button
+        $("btn-begin").addEventListener("click", () => {
+          showScreen("screen-big-question");
+        });
+
+        // Continue to summary from dateday
+        const nextDateday = $("next-dateday");
+        if (nextDateday) {
+          nextDateday.addEventListener("click", () => {
+            if (userAnswers.dateDay) {
+              updateSummary();
+              showScreen("screen-summary");
+            }
+          });
+        }
+
+        // Summary -> fee
+        $("btn-continue-fee").addEventListener("click", () => {
+          showScreen("screen-fee");
+        });
+
+        // Fee pay button
+        $("btn-pay-fee").addEventListener("click", () => {
+          celebrate();
+          setTimeout(() => {
+            $("btn-pay-fee").style.display = "none";
+            $("prank-reveal").classList.remove("hidden");
+          }, 800);
+        });
+
+        // Continue to send screen
+        $("btn-continue-send").addEventListener("click", () => {
+          showScreen("screen-send");
+        });
+
+        // WhatsApp button
+        $("btn-whatsapp").addEventListener("click", () => {
+          sendToWhatsApp();
+        });
+
+        // Download buttons
+        $("btn-download").addEventListener("click", downloadDatePlan);
+        $("btn-download-final").addEventListener("click", downloadDatePlan);
+      }
+
+      // =============================================
+      // 15. BOOTSTRAP
+      // =============================================
+      function init() {
+        initFloatingHearts();
+        initBigQuestion();
+        initChoiceScreens();
+        initUnexpectedScreen();
+        initNavigation();
+
+        // Start at welcome
+        showScreen("screen-welcome");
+      }
+
+      document.addEventListener("DOMContentLoaded", init);
+    })();
+  </script>
+</body>
+</html>
